@@ -1,19 +1,30 @@
 import { useState } from "react"
-import ListItem from "./ListItem"
+import ListItem from "./Components/ListItem"
+import AddTask from "./Components/AddTask"
 
 function App() {
-const[tasks, setTasks] = useState([{
-  id: 1,
-  task: "Sample Task",
-  completed: false,
-  createdOn: new Date()
-}])
+  const [tasks, setTasks] = useState([{
+    id: 1,
+    task: "Sample Task",
+    completed: false,
+    createdOn: new Date()
+  }])
+
+const addNewTask = (taskDetails) => {
+    const newTask = {
+      id: tasks.length + 1,
+      task: taskDetails,
+      completed: false,
+      createdOn: new Date()
+    }
+    setTasks([...tasks, newTask])
+  }
 
   return (
-    
+
     <div className="h-screen w-screen flex justify-center bg-stone-100">
       <div className="flex flex-col items-center m-24 w-3xl">
-        <div className="text-2xl">TODO LIST</div>
+        <div className="text-2xl ">TODO LIST</div>
         <div className="flex w-full justify-between">
           <div>
             <button className="bg-blue-600 p-2 rounded-lg text-white hover:bg-blue-400 cursor-pointer">Add Task</button>
@@ -27,9 +38,10 @@ const[tasks, setTasks] = useState([{
           </div>
         </div>
         {/* end btns */}
+        <AddTask addNewTask = {addNewTask}/>
         <div className="bg-slate-300 w-full rounded-lg mt-4 px-8 py-6">
           {tasks.map((task) => (
-          <ListItem key={task.id} task={task}/> 
+            <ListItem key={task.id} task={task} />
           ))}
         </div>
         {/* end list */}
