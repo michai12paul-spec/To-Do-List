@@ -10,14 +10,31 @@ function App() {
     createdOn: new Date()
   }])
 
-const addNewTask = (taskDetails : string) => {
+  const addNewTask = (taskDetails: string) => {
     const newTask = {
-      id: tasks.length? tasks[tasks.length-1].id + 1 : 1,
+      id: tasks.length ? tasks[tasks.length - 1].id + 1 : 1,
       task: taskDetails,
       completed: false,
       createdOn: new Date()
     }
     setTasks([...tasks, newTask])
+  }
+
+  const deleteTask = (taskId: number) => {
+    const updTasks = tasks.filter((task) => {
+      return task.id !== taskId
+    })
+    setTasks(updTasks)
+  }
+
+  const toggleComplete = (taskId: number) => {
+    const updTasks = tasks.map((task) => {
+      if (task.id === taskId) {
+        return { ...task, completed: !task.completed }
+      }
+      return task
+    })
+    setTasks(updTasks)
   }
 
   return (
@@ -38,10 +55,10 @@ const addNewTask = (taskDetails : string) => {
           </div>
         </div>
         {/* end btns */}
-        <AddTask addNewTask = {addNewTask}/>
+        <AddTask addNewTask={addNewTask} />
         <div className="bg-slate-300 w-full rounded-lg mt-4 px-8 py-6">
           {tasks.map((task) => (
-            <ListItem key={task.id} task={task} />
+            <ListItem key={task.id} task={task} delTask={deleteTask} toggleComplete={toggleComplete}/>
           ))}
         </div>
         {/* end list */}

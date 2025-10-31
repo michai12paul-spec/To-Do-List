@@ -1,7 +1,11 @@
-const DeleteItems = () => {
+const DeleteItems = ({ taskId, delTask }) => {
+    const handleDelete = () => {
+        delTask(taskId);
+    }
+
     return (
         <>
-            <i className="fa-solid fa-trash relative top-3 mx-3"></i>
+            <i className="fa-solid fa-trash relative top-3 mx-3 cursor-pointer" onClick={handleDelete}></i>{taskId}
         </>
     )
 }
