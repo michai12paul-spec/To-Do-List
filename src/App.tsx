@@ -10,7 +10,7 @@ function App() {
     createdOn: new Date()
   }])
 
-const addNewTask = (taskDetails) => {
+const addNewTask = (taskDetails : string) => {
     const newTask = {
       id: tasks.length? tasks[tasks.length-1].id + 1 : 1,
       task: taskDetails,

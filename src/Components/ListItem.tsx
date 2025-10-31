@@ -1,4 +1,6 @@
 import { format } from "date-and-time"
+import DeleteItems from "./DeleteItems"
+
 
 
 const ListItem = ({task}) => {
@@ -18,7 +20,8 @@ const ListItem = ({task}) => {
                 </div>
             </div>
             <div>
-                <i className="fa-solid fa-trash relative top-3 mx-3"></i>
+                <DeleteItems taskId={task.id} />
+                
                 <i className="fa-solid fa-pen relative top-3 mx-3"></i>
             </div>
         </div>
