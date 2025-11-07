@@ -6,7 +6,7 @@ const TaskStatus = ({ taskId, taskStatus, toggleComplete, }) => {
     }
     return (
         <button onClick={handleToggle}>
-            {taskStatus ? <i className="fa-regular fa-square-check text-xl relative "></i> : <i className="fa-regular fa-square text-xl relative "></i>}
+            {taskStatus ? <i className="fa-regular fa-square-check text-xl relative cursor-pointer"></i> : <i className="fa-regular fa-square text-xl relative cursor-pointer"></i>}
 
         </button>
     )

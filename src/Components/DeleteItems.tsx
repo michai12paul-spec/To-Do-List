@@ -5,7 +5,7 @@ const DeleteItems = ({ taskId, delTask }) => {
 
     return (
         <>
-            <i className="fa-solid fa-trash relative top-3 mx-3 cursor-pointer" onClick={handleDelete}></i>{taskId}
+            <i className="fa-solid fa-trash relative top-3 mx-3 cursor-pointer" onClick={handleDelete}></i>
         </>
     )
 }

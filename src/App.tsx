@@ -1,6 +1,7 @@
 import { useState } from "react"
 import ListItem from "./Components/ListItem"
 import AddTask from "./Components/AddTask"
+import EditTask from "./Components/EditTask"
 
 function App() {
   const [tasks, setTasks] = useState([{
@@ -9,6 +10,11 @@ function App() {
     completed: false,
     createdOn: new Date()
   }])
+
+  const [taskToEdit, SetTaskToEdit] = useState({
+    id: 0,
+    task: ""
+  })
 
   const addNewTask = (taskDetails: string) => {
     const newTask = {
@@ -27,6 +33,16 @@ function App() {
     setTasks(updTasks)
   }
 
+  const updateTask = (taskId: number, taskDetails: string) => {
+    let updTasks = tasks.map((task) => {
+      if (task.id === taskId)
+        task.task = taskDetails
+      return task
+    })
+    setTasks(updTasks)
+  }
+
+
   const toggleComplete = (taskId: number) => {
     const updTasks = tasks.map((task) => {
       if (task.id === taskId) {
@@ -36,6 +52,7 @@ function App() {
     })
     setTasks(updTasks)
   }
+
 
   return (
 
@@ -56,9 +73,10 @@ function App() {
         </div>
         {/* end btns */}
         <AddTask addNewTask={addNewTask} />
+        <EditTask taskToEdit={taskToEdit} updateTask={updateTask} SetTaskToEdit={SetTaskToEdit}/>
         <div className="bg-slate-300 w-full rounded-lg mt-4 px-8 py-6">
           {tasks.map((task) => (
-            <ListItem key={task.id} task={task} delTask={deleteTask} toggleComplete={toggleComplete}/>
+            <ListItem key={task.id} task={task} delTask={deleteTask} toggleComplete={toggleComplete} setEdit={SetTaskToEdit} />
           ))}
         </div>
         {/* end list */}

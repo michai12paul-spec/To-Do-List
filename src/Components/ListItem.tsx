@@ -1,10 +1,13 @@
 import { format } from "date-and-time"
 import DeleteItems from "./DeleteItems"
 import TaskStatus from "./TaskStatus"
+import EditItem from "./EditItem"
 
 
 
-const ListItem = ({ task, delTask, toggleComplete }) => {
+
+const ListItem = ({ task, delTask, toggleComplete, setEdit }) => {
+
     return (
         <div className="flex justify-between bg-white my-3 p-4 rounded-lg">
             <div className="flex">
@@ -25,7 +28,7 @@ const ListItem = ({ task, delTask, toggleComplete }) => {
             <div>
                 <DeleteItems taskId={task.id} delTask={delTask} />
 
-                <i className="fa-solid fa-pen relative top-3 mx-3"></i>
+                <EditItem taskId={task.id} taskDetails={task.task} setEdit= {setEdit} />
             </div>
         </div>
     )
