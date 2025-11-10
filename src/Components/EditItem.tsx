@@ -1,6 +1,6 @@
 
 
-const EditItem = ({ taskId, taskDetails, setEdit }) => {
+const EditItem = ({ taskId, taskDetails, setEdit, showEditTask, showEditTaskComponent}) => {
 
     const handleEdit = () => {
         setEdit({
